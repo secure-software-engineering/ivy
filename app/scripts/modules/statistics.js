@@ -6,8 +6,6 @@ define(
     ],
 
     function(defineComponent) {
-        return defineComponent(statistics);
-
         function statistics() {
             // Define attributes.
             this.defaultAttrs({
@@ -18,13 +16,13 @@ define(
                 Globals.clearProbandList();
 
                 // Set message.
-                $("#statisticsAlert").html($.t("statistics.load-proband-information"));
+                $('#statisticsAlert').html($.t('statistics.load-proband-information'));
 
                 // Get proband list.
-                var probandList = $("#proband-list-statistics");
+                var probandList = $('#proband-list-statistics');
 
                 // Empty list.
-                probandList.html("");
+                probandList.html('');
 
                 // Get list of active probands.
                 var activeProbandList = Globals.getProbandList();
@@ -33,9 +31,9 @@ define(
                 var workspace = Globals.getWorkspace();
 
                 // Get list of probands from workspace.
-                var probands = workspace['proband_data'];
+                var probands = workspace.proband_data;
 
-                var source = $("#statistics-probands-template").html();
+                var source = $('#statistics-probands-template').html();
                 var template = Handlebars.compile(source);
                 $('#proband-list-statistics').html(template({
                     probands: probands
@@ -47,21 +45,21 @@ define(
                 // this.trigger('uiStatisticsPrepare');
 
                 // Get statistics container.
-                var statisticsContainer = $(".statistics-container");
+                var statisticsContainer = $('.statistics-container');
 
                 // Remove old content, if any.
-                statisticsContainer.html("");
+                statisticsContainer.html('');
 
                 // Clear statistics alert.
-                $("#statisticsAlert").hide();
+                $('#statisticsAlert').hide();
 
                 // Get proband list.
                 var probandList = Globals.getProbandList();
 
                 // If proband list is empty...
-                if (probandList.length == 0) {
+                if (probandList.length === 0) {
                     // Show message.
-                    $("#statisticsAlert").show();
+                    $('#statisticsAlert').show();
 
                     // And...
                     return;
@@ -81,7 +79,7 @@ define(
                 for (var proband in probandData) {
                     statisticsContainer.append('<p>' + proband + '</p>');
                     statisticsContainer.append('<div id="foi-' + proband + '"></div>');
-                    var frequency = Calculations.getInteractionTypeFrequencyArray(probandData[proband]['interactions']);
+                    var frequency = Calculations.getInteractionTypeFrequencyArray(probandData[proband].interactions);
                     var plotFrequency = $.jqplot(
                         'foi-' + proband, [frequency], {
                             seriesDefaults: {
@@ -104,9 +102,9 @@ define(
 
                 statisticsContainer.append('<h3 data-i18n="statistics.label-privacy"></h3>').i18n();
 
-                for (var proband in probandData) {
+                for (proband in probandData) {
                     // Get privacy data.
-                    var privacy = probandData[proband]['privacy'];
+                    var privacy = probandData[proband].privacy;
 
                     // Create table.
                     var privacyTable = $('<table class="table"></table>');
@@ -148,4 +146,7 @@ define(
                 });
             });
         }
-    });
+
+        return defineComponent(statistics);
+    }
+);

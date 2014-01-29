@@ -1,16 +1,16 @@
 'use strict';
 
 define(
-	[
-		'components/flight/lib/component'
-	],
+    [
+        'components/flight/lib/component'
+    ],
 
-	function(defineComponent) {
-		return defineComponent(configuration);
+    function(defineComponent) {
+        function configuration() {
+            this.after('initialize', function() {
+            });
+        }
 
-		function configuration() {
-			this.after('initialize', function() {
-			});
-		}
-	}
+        return defineComponent(configuration);
+    }
 );

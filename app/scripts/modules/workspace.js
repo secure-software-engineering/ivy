@@ -8,15 +8,13 @@ define(
     ],
 
     function(defineComponent) {
-        return defineComponent(workspace);
-
         function workspace() {
             // Workspaces.
             var workspaces = {};
 
             this.listWorkspaces = function(ev, data) {
                 // Delete all previous listed workspace names.
-                $("#workspaces-table").find("tbody").find("tr").remove();
+                $('#workspaces-table').find('tbody').find('tr').remove();
 
                 // Get list of workspaces.
                 var workspaces = Storage.getListOfWorkspaces();
@@ -24,7 +22,7 @@ define(
                 // If workspaces list is empty, set information to table.
                 if (workspaces.length === 0) {
                     var emptyInformation = '<tr><td colspan="3"><center><h3 data-i18n="messages.no-entries-workspace"></h3></center></td></tr>';
-                    $("#workspaces-table").find("tbody").append(emptyInformation).i18n();
+                    $('#workspaces-table').find('tbody').append(emptyInformation).i18n();
                 }
 
                 // List workspaces in DOM.
@@ -32,23 +30,23 @@ define(
                     // Current workspace.
                     var workspace = workspaces[i];
 
-                    // Generate row.    
-                    var row = $("<tr></tr>");
+                    // Generate row.
+                    var row = $('<tr></tr>');
 
                     // Create entries.
-                    var workspaceNameEntry = $("<td></td>").html(workspace);
-                    var additionalInformationEntry = $("<td></td>");
-                    var buttonEntry = $("<td></td>");
-                    var buttonGroup = $("<div class='btn-group'></div>");
+                    var workspaceNameEntry = $('<td></td>').html(workspace);
+                    var additionalInformationEntry = $('<td></td>');
+                    var buttonEntry = $('<td></td>');
+                    var buttonGroup = $('<div class="btn-group"></div>');
 
                     // Create buttons.
-                    var loadButton = $("<button class='load-workspace-button btn btn-mini' data-i18n='workspaces.load-button'></button>")
+                    var loadButton = $('<button class="load-workspace-button btn btn-mini" data-i18n="workspaces.load-button"></button>')
                         .attr('workspace', workspace)
                         .i18n();
-                    var exportButton = $("<button class='export-single-workspace-button btn btn-mini btn-info' data-i18n='workspaces.single-export-button'></button>")
+                    var exportButton = $('<button class="export-single-workspace-button btn btn-mini btn-info" data-i18n="workspaces.single-export-button"></button>')
                         .attr('workspace', workspace)
                         .i18n();
-                    var deleteButton = $("<button class='delete-workspace-button btn btn-mini btn-danger' data-i18n='workspaces.delete-button'></button>")
+                    var deleteButton = $('<button class="delete-workspace-button btn btn-mini btn-danger" data-i18n="workspaces.delete-button"></button>')
                         .attr('workspace', workspace)
                         .i18n();
 
@@ -64,7 +62,7 @@ define(
                     row.append(buttonEntry);
 
                     // Insert.
-                    $("#workspaces-table").find("tbody").append(row);
+                    $('#workspaces-table').find('tbody').append(row);
                 }
             };
 
@@ -108,7 +106,7 @@ define(
                     Storage.createWorkspace(workspace);
                 } catch (e) {
                     // Name conflict found?
-                    if (e == "name_conflict") {
+                    if (e === 'name_conflict') {
                         // Show modal with error.
                         this.trigger('uiAnimateShowModal', {
                             header: 'modal.create-workspace-name-conflict-header',
@@ -157,4 +155,7 @@ define(
                 this.on('uploadWorkspaceFile', this.uploadWorkspaceFile);
             });
         }
-    });
+
+        return defineComponent(workspace);
+    }
+);

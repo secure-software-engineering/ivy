@@ -6,8 +6,6 @@ define(
 	],
 
 	function(defineComponent) {
-		return defineComponent(setup);
-
 		function setup() {
 			this.after('initialize', function() {
 				// Load workspaces area.
@@ -18,5 +16,7 @@ define(
 				});
 			});
 		}
+
+		return defineComponent(setup);
 	}
 );

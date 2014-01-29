@@ -1,6 +1,7 @@
 {
     "node": true,
     "browser": true,
+    "devel": true,
     "esnext": true,
     "bitwise": false,
     "curly": false,
@@ -12,8 +13,10 @@
     "noarg": true,
     "undef": true,
     "strict": false,
-    "trailing": false,
-    "smarttabs": true,
+    "trailing": true,
+    "smarttabs": false,
+    "validthis": true,
+    "quotmark": "single",
     "globals": {
         "jQuery": true,
         "$": true,
@@ -21,6 +24,7 @@
         "Calculations": true,
         "Globals": true,
         "Storage": true,
-        "define": true
+        "define": true,
+        "saveAs": true
     }
 }

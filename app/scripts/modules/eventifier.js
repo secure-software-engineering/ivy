@@ -6,8 +6,6 @@ define(
 	],
 
 	function(defineComponent) {
-		return defineComponent(eventifier);
-
 		function eventifier() {
 			// Define attributes.
 			this.defaultAttrs({
@@ -32,5 +30,7 @@ define(
 				});
 			});
 		}
+
+		return defineComponent(eventifier);
 	}
 );

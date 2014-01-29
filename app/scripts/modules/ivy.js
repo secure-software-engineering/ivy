@@ -49,8 +49,8 @@ define(
             });
 
             // Translate.
-            $("#landing-page").i18n();
-            $("#ivy-page").i18n();
+            $('#landing-page').i18n();
+            $('#ivy-page').i18n();
         }
 
         return initialize;

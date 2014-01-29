@@ -7,38 +7,36 @@ define(
     ],
 
     function(defineComponent) {
-        return defineComponent(probands);
-
         function probands() {
             this.showProbands = function(ev, data) {
                 // Delete previous shown probands from list.
-                $("#probands-table").find("tbody").find("tr").remove();
+                $('#probands-table').find('tbody').find('tr').remove();
 
                 // Get global workspace.
                 var workspace = Globals.getWorkspace();
 
                 // Get proband data.
-                var probandData = workspace['proband_data'];
+                var probandData = workspace.proband_data;
 
                 // If probands list is empty, set information to table.
                 if ($.isEmptyObject(probandData)) {
                     var emptyInformation = '<tr><td colspan="3"><center><h3 data-i18n="messages.no-entries-probands"></h3></center></td></tr>';
-                    $("#probands-table").find("tbody").append(emptyInformation).i18n();
+                    $('#probands-table').find('tbody').append(emptyInformation).i18n();
                 }
 
                 // Iterate through probands.
                 for (var proband in probandData) {
                     // Generate row.
-                    var row = $("<tr></tr>");
+                    var row = $('<tr></tr>');
 
                     // Create entries.
-                    var probandNameEntry = $("<td></td>").html(proband);
-                    var additionalInformationEntry = $("<td></td>");
-                    var buttonEntry = $("<td></td>");
-                    var buttonGroup = $("<div class='btn-group'></div>");
+                    var probandNameEntry = $('<td></td>').html(proband);
+                    var additionalInformationEntry = $('<td></td>');
+                    var buttonEntry = $('<td></td>');
+                    var buttonGroup = $('<div class="btn-group"></div>');
 
                     // Create buttons.
-                    var deleteButton = $("<button class='delete-proband-button btn btn-mini btn-danger' data-i18n='proband.button-delete'></button>")
+                    var deleteButton = $('<button class="delete-proband-button btn btn-mini btn-danger" data-i18n="proband.button-delete"></button>')
                         .attr('workspace', workspace)
                         .attr('proband', proband)
                         .i18n();
@@ -54,7 +52,7 @@ define(
                     row.append(buttonEntry);
 
                     // Insert.
-                    $("#probands-table").find("tbody").append(row);
+                    $('#probands-table').find('tbody').append(row);
                 }
             };
 
@@ -93,7 +91,7 @@ define(
             };
 
             this.sanitizeProbandModals = function(ev, data) {
-                $("#add-proband-name").val("");
+                $('#add-proband-name').val('');
             };
 
             this.updateFileName = function(evt, data) {
@@ -128,5 +126,7 @@ define(
                 this.on('uploadProbandFile', this.uploadProbandFile);
             });
         }
+
+        return defineComponent(probands);
     }
 );

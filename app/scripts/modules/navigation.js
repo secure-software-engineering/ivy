@@ -7,8 +7,6 @@ define(
     ],
 
     function(defineComponent) {
-        return defineComponent(navigation);
-
         function navigation() {
             // Define attributes.
             this.defaultAttrs({
@@ -41,7 +39,7 @@ define(
                 this.trigger('dataListWorkspaces', {
                     message: new Date().toLocaleString()
                 });
-                
+
                 var node = $(e.target);
                 this.trigger('uiPageLoadRequested', {
                     identifier: node.attr('identifier'),
@@ -78,13 +76,13 @@ define(
             this.createWorkspace = function(e) {
                 // Trigger event with information.
                 this.trigger('dataCreateWorkspace', {
-                    workspaceName: $("#create-workspace-name").val(),
-                    author: $("#create-workspace-author").val()
+                    workspaceName: $('#create-workspace-name').val(),
+                    author: $('#create-workspace-author').val()
                 });
 
                 // Clear fields.
-                $("#create-workspace-name").val("");
-                $("#create-workspace-author").val("");
+                $('#create-workspace-name').val('');
+                $('#create-workspace-author').val('');
 
                 // Trigger reload.
                 this.trigger('dataListWorkspaces');
@@ -92,7 +90,7 @@ define(
 
             this.deleteWorkspace = function(e) {
                 // Check, if user really wants to delete workspace.
-                var check = confirm($.t("dialogs.check-delete-workspace"));
+                var check = confirm($.t('dialogs.check-delete-workspace'));
 
                 // If not, return.
                 if (!check) return;
@@ -111,11 +109,11 @@ define(
 
             this.addProbandData = function(e) {
                 // Get name of new proband.
-                var name = $("#add-proband-name").val();
+                var name = $('#add-proband-name').val();
 
                 // If name is empty, return.
-                if (name === "") {
-                    alert($.t("messages.empty-proband-name"));
+                if (name === '') {
+                    alert($.t('messages.empty-proband-name'));
 
                     // Stop.
                     return;
@@ -128,7 +126,7 @@ define(
                     // Parse from text to object.
                     data = $.parseJSON(data);
                 } catch (ex) {
-                    alert($.t("messages.corrupt-proband-data"));
+                    alert($.t('messages.corrupt-proband-data'));
 
                     // Stop.
                     return;
@@ -177,7 +175,7 @@ define(
 
             this.modalOk = function(e) {
                 // Hide modal.
-                $("#modal-box").hide();
+                $('#modal-box').hide();
             };
 
             this.importWorkspaces = function(e) {
@@ -279,4 +277,7 @@ define(
                 });
             });
         }
-    });
+
+        return defineComponent(navigation);
+    }
+);

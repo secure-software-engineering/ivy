@@ -1,62 +1,64 @@
 'use strict';
 
 define(
-	[
-		'components/flight/lib/component'
-	],
+    [
+        'components/flight/lib/component'
+    ],
 
-	function(defineComponent) {
-		return defineComponent(pageLoader);
+    function(defineComponent) {
 
-		function pageLoader() {
-			this.changePageTo = function(ev, data) {
-				// Generate path from identifier.
-				var path = 'templates/' + data.identifier + '.html';
 
-				// Get stage.
-				var stage = '.' + data.stage;
+        function pageLoader() {
+            this.changePageTo = function(ev, data) {
+                // Generate path from identifier.
+                var path = 'templates/' + data.identifier + '.html';
 
-				// Get event.
-				var eventAfterLoad = data.eventAfterLoad;
+                // Get stage.
+                var stage = '.' + data.stage;
 
-				// Get possible parameters.
-				var eventAfterLoadParameters = data.eventAfterLoadParameters;
+                // Get event.
+                var eventAfterLoad = data.eventAfterLoad;
 
-				// If string, try to split by comma.
-				if(eventAfterLoad && eventAfterLoad.substring)
-					eventAfterLoad = eventAfterLoad.split(",");
+                // Get possible parameters.
+                var eventAfterLoadParameters = data.eventAfterLoadParameters;
 
-				// Set context for event triggering.
-				var context = this;
+                // If string, try to split by comma.
+                if (eventAfterLoad && eventAfterLoad.substring)
+                    eventAfterLoad = eventAfterLoad.split(',');
 
-				// Send request.
-				$.ajax({
-					url: path,
-					dataType: 'html',
-					success: function(message) {
-						// Set stage.
-						$(stage).html(message);
+                // Set context for event triggering.
+                var context = this;
 
-						// Translate.
-						$(stage).i18n();
+                // Send request.
+                $.ajax({
+                    url: path,
+                    dataType: 'html',
+                    success: function(message) {
+                        // Set stage.
+                        $(stage).html(message);
 
-						// Trigger event, if any.
-						if(eventAfterLoad != null) {
-							// Array hack.
-							eventAfterLoad = [].concat(eventAfterLoad);
+                        // Translate.
+                        $(stage).i18n();
 
-							// Trigger events.
-							for(var i in eventAfterLoad) {
-								context.trigger(eventAfterLoad[i], eventAfterLoadParameters);
-							}
-						}
-					}
-				});
-			};
+                        // Trigger event, if any.
+                        if (eventAfterLoad != null) {
+                            // Array hack.
+                            eventAfterLoad = [].concat(eventAfterLoad);
 
-			this.after('initialize', function() {
-				this.on('uiPageLoadRequested', this.changePageTo);
-			});
-		}
-	}
+                            // Trigger events.
+                            for (var i in eventAfterLoad) {
+                                context.trigger(eventAfterLoad[i], eventAfterLoadParameters);
+                            }
+                        }
+                    }
+                });
+            };
+
+            this.after('initialize', function() {
+                this.on('uiPageLoadRequested', this.changePageTo);
+            });
+        }
+
+        return defineComponent(pageLoader);
+    }
 );

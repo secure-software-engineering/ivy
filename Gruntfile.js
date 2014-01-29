@@ -52,7 +52,7 @@ module.exports = function(grunt) {
             }
         },
 
-        clean: ["dist", ".tmp"],
+        clean: ['dist', '.tmp'],
 
         useminPrepare: {
             html: 'app/index.html',
@@ -97,10 +97,10 @@ module.exports = function(grunt) {
         requirejs: {
             dist: {
                 options: {
-                    baseUrl: "app/scripts/modules",
-                    mainConfigFile: "app/scripts/modules/main.js",
-                    name: "main",
-                    out: "dist/scripts/modules/main.js",
+                    baseUrl: 'app/scripts/modules',
+                    mainConfigFile: 'app/scripts/modules/main.js',
+                    name: 'main',
+                    out: 'dist/scripts/modules/main.js',
                     almond: true,
                     replaceRequireScript: [{
                         files: ['dist/index.html'],
