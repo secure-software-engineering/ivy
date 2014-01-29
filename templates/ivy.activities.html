@@ -1,0 +1,63 @@
+<div class="row-fluid">
+  <div class="span3">
+    <h2>Probands</h2>
+    <ul class="nav nav-list sidenav" id="proband-list-activities">
+    </ul>
+  </div>
+  <div class="span9" id="activities-area">
+    <div class="row-fluid">
+        <div class="span9">
+            <h2>Activities</h2>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span9">
+            <div id="activities-table" class="activities-table"></div>    
+        </div>
+    </div>
+  </div>
+</div>
+
+<div id="table"></div>
+
+<script id="activities-probands-template" type="text/x-handlebars-template">
+{{#each probands}}
+<li><a data-proband="{{@key}}">{{@key}}</a></li>
+{{/each}}
+</script>
+
+<script id="activities-table-template" type="text/x-handlebars-template">
+    <table class="table table-condensed table-bordered">
+        <thead>
+            <tr>
+                <th></th>
+                <th colspan={{this.like.probandsData.length}}>Particitpients</th>
+                <th colspan=4>Color coding</th>
+            </tr>
+            <tr>
+                <th class="first-col">Action</th>
+                {{#each this.like.probandsData}}
+                  <th>{{name}}</th>
+                {{/each}}
+                <th>negligible</th>
+                <th>low</th>
+                <th>medium</th>
+                <th>high</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each this}}
+                <tr>
+                    <td class="first-col">{{@key}}</td>
+                    {{#each this.probandsData}}
+                        <td class="{{class}}">{{quantity}}</td>
+                    {{/each}}
+                    <td class="negligible sign">{{this.colorCoding.negligible}}</td>
+                    <td class="low sign">{{this.colorCoding.low}}</td>
+                    <td class="medium sign">{{this.colorCoding.medium}}</td>
+                    <td class="high sign">{{this.colorCoding.high}}</td>
+                </tr>
+            {{/each}}            
+        </tbody>
+    </table>
+</script>
