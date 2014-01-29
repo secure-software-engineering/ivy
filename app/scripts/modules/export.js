@@ -37,11 +37,9 @@ define(
 
                 // Use HTML5 FileAPI.
                 saveAs(
-                    new Blob(
-                        [json], {
-                            type: 'text/plain;charset=' + document.characterSet
-                        }
-                    ),
+                    new Blob([json], {
+                        type: 'text/plain;charset=' + document.characterSet
+                    }),
                     'workspaceExport.json'
                 );
             };
@@ -71,11 +69,9 @@ define(
 
                 // Use HTML5 FileAPI.
                 saveAs(
-                    new Blob(
-                        [json], {
-                            type: 'text/plain;charset=' + document.characterSet
-                        }
-                    ),
+                    new Blob([json], {
+                        type: 'text/plain;charset=' + document.characterSet
+                    }),
                     'workspace.json'
                 );
             };

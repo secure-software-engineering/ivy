@@ -17,6 +17,7 @@
     "smarttabs": false,
     "validthis": true,
     "quotmark": "single",
+    "indent": 4,
     "globals": {
         "jQuery": true,
         "$": true,
