@@ -1,0 +1,116 @@
+#landing-page {
+	padding: 0 40px;
+}
+
+.state {
+	padding: 20px;
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
+.sidenav {
+  padding-left: 0;
+}
+
+.sidenav > li > a {
+  padding: 8px 14px;
+  border: 1px solid #e5e5e5;
+  margin: 0 0 -1px;
+}
+
+a {
+	cursor: pointer;
+}
+
+.workspace-information {
+  padding-left: 5px;
+}
+
+.highlighted-top-nav {
+	color: #000;
+}
+
+.activated-proband:before {
+	content: "— ";
+}
+
+div.timeline-event-dot {
+  border-color: orange;
+  background-color: yellow;
+}
+
+#inputProbandFile{
+	display: none;
+}
+
+#inputWorkspaceFile{
+	display: none;
+}
+
+rect.bordered {
+    stroke: #E6E6E6;
+    stroke-width:2px;
+}
+text.mono {
+    font-size: 9pt;
+    font-family: Consolas, courier;
+    fill: #aaa;
+}
+text.axis-workweek {
+    fill: #000;
+}
+text.axis-worktime {
+    fill: #000;
+}
+
+/* Style code for PACE.js page loader animation */
+
+.pace .pace-progress {
+  /*background: #29d;*/
+  background: #FFF;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  height: 2px;
+
+  -webkit-transition: width 1s;
+  -moz-transition: width 1s;
+  -o-transition: width 1s;
+  transition: width 1s;
+}
+
+.pace-inactive {
+  display: none;
+}
+
+.activities-table th {
+    text-align: center;
+}
+.activities-table th.first-col {
+    text-align: left;
+}
+.activities-table td {
+    text-align: center;
+}
+.activities-table td.first-col {
+    text-align: left;
+}
+.activities-table td.negligible {
+    background-color: #FFFFCC;
+}
+.activities-table td.low {
+    background-color: #A1DAB4;
+}
+.activities-table td.medium {
+    background-color: #41B6C4;
+}
+.activities-table td.high {
+    background-color: #225EA8;
+    color: white;
+}
+.activities-table td.sign:before {
+    content:"≥ ";
+}

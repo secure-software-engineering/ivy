@@ -1,0 +1,52 @@
+<div class="row-fluid">
+  <div class="span3">
+    <h2>Probands</h2>
+    <ul class="nav nav-list sidenav" id="proband-list-heatmap">
+    </ul>
+  </div>
+  <div class="span9" id="statistics-area">
+    <h2>Interactions</h2>
+    <div class="statistics-container"></div>
+    <div id="heatmap-chart">
+    </div>
+
+    <div id="heatmap-details">
+    </div>
+  </div>
+</div>
+
+
+<script id="heatmap-probands-template" type="text/x-handlebars-template">
+{{#each probands}}
+<li><a data-proband="{{@key}}">{{@key}}</a></li>
+{{/each}}
+</script>
+
+<script id="heatmap-details-template" type="text/x-handlebars-template">
+  <div class="well">
+
+  <dl class="dl-horizontal">
+  <dt>Object ID</dt>
+  <dd>{{id}}</dd>
+  <dt>Total</dt>
+  <dd>{{data.length}}</dd>
+  <dt>Events</dt>
+  <dd><table class="table table-condensed table-striped table-hover">
+  <tbody>
+  <thead>
+    <th>Date</th>
+    <th>Proband ID</th>
+    <th>Interaction Type</th>
+  </thead>
+  {{#each data}}
+    <tr>
+      <td>{{time}}</td>
+      <td>{{proband_id}}</td>
+      <td>{{interaction_type}}</td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table></dd>
+</dl>
+  </div>
+</script>

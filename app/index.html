@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- <script src="components/jquery-migrate/jquery-migrate.min.js"></script> -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="bower_components/bower-twittstrap/build/bootstrap-responsive.css">
+    <link rel="stylesheet" href="bower_components/bower-twittstrap/build/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/jqplot/jquery.jqplot.css">
+    <link rel="stylesheet" href="bower_components/chap-links-timeline/timeline.css">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+    <!-- build:js scripts/modernizr.js -->
+    <script src="bower_components/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
+</head>
+<body>
+    <div id="pt-main">
+        <div>
+            <section id="ivy-page">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="container">
+                            <a class="brand" href="#" data-i18n="ivy-page.name"></a>
+                            <ul class="nav">
+                                <li><a class="navref" stage="state" identifier="ivy.workspaces" eventAfterLoad="dataListWorkspaces" data-i18n="ivy-page.workspaces"></a></li>
+                                <li><a class="navref" stage="state" identifier="ivy.proband" eventAfterLoad="uiShowProbands" data-i18n="ivy-page.probands"></a></li>
+                                <li><a class="navref" stage="state" identifier="ivy.statistics" eventAfterLoad="uiStatisticsPrepare,uiShowStatistics" data-i18n="ivy-page.statistics"></a></li>
+                                <li><a class="navref" stage="state" identifier="ivy.timeline" eventAfterLoad="uiLoadTimeline" data-i18n="ivy-page.timeline"></a></li>
+                                <li><a class="navref" stage="state" identifier="ivy.heatmap" eventAfterLoad="uiLoadHeatmap" data-i18n="ivy-page.heatmap"></a></li>
+                                <li><a class="navref" stage="state" identifier="ivy.activities" eventAfterLoad="uiLoadActivities" data-i18n="ivy-page.activities"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <ul class="breadcrumb">
+                  <li><a href="#" class="workspace-information" data-i18n="workspaces.no-workspace-loaded"></a></li>
+                </ul>
+                <div class="state">
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+
+    <!-- build:js scripts/vendor-components.js -->
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/es5-shim/es5-sham.js"></script>
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/i18next/release/i18next-1.7.1.js"></script>
+    <script src="bower_components/bower-twittstrap/build/bootstrap.js"></script>
+    <script src="bower_components/jqplot/jquery.jqplot.js"></script>
+    <script src="bower_components/jqplot/plugins/jqplot.pieRenderer.js"></script>
+    <script src="bower_components/jstorage/jstorage.js"></script>
+    <script src="bower_components/blob/Blob.js"></script>
+    <script src="bower_components/FileSaver/FileSaver.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js scripts/ivy-components.js -->
+    <script src="scripts/globals.js"></script>
+    <script src="scripts/storage.js"></script>
+    <script src="scripts/calculations.js"></script>
+    <!-- endbuild -->
+
+    <script data-main="scripts/modules/main" src="bower_components/requirejs/require.js"></script>
+</body>
+</html>

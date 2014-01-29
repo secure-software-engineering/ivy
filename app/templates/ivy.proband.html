@@ -1,0 +1,60 @@
+<div class="row-fluid">
+	<div class="span12">
+		<h2 data-i18n="proband.caption"></h2>
+	</div>
+</div>
+<div class="row-fluid">
+	<div class="span12">
+		<div class="btn-group">
+			<button class="btn btn-primary eventify" event="uiAnimateDropToNormal" data-toggle="modal" data-target="#add-proband-modal" ><i class="icon-user icon-white"></i> <span data-i18n="proband.button-add-proband"></span></button>
+		</div>
+	</div>
+</div>
+<div class="row-fluid">
+	<div class="span12">
+		<table class="table" id="probands-table">
+			<thead>
+				<tr>
+					<th width="40%" data-i18n="proband.proband-name"></th>
+					<th width="40%" data-i18n="proband.additional-information"></th>
+					<th width="20%" data-i18n="proband.actions"></th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="modal hide fade" id="add-proband-modal">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h3 data-i18n="proband.button-add-proband"></h3>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal">
+			<div class="control-group">
+				<label class="control-label" for="add-proband-name" data-i18n="proband.label-proband-name"></label>
+				<div class="controls">
+					<input type="text" class="span3" id="add-proband-name"></input>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="inputFile">
+					File Name
+				</label>
+				<div class="controls controls-row">
+					<div class="input-append">
+	  					<input class="span3 uneditable-input drag-n-drop-area" id="inputSelectedFileName" type="text" placeholder="Select or drop file here">
+	  					<input type="file" id="inputProbandFile">
+	  					<button id="buttonSelectProbandFile" class="btn" type="button">Browse...</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" id="add-proband-button" data-dismiss="modal" data-i18n="proband.button-add-proband"></button>
+		<button class="btn" data-dismiss="modal" data-i18n="buttons.cancel"></button>
+	</div>
+</div>
