@@ -1,0 +1,22 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "homepage": "https://github.com/oliverh855/ivy",
+  "authors": [
+    "Oliver Hoffmann <oliverh855@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "mocha": "~1.17.1",
+    "chai": "~1.9.0",
+    "jquery": "~2.1.0"
+  }
+}
