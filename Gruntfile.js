@@ -150,6 +150,11 @@ module.exports = function(grunt) {
         ]);
     });
 
+    grunt.registerTask('test', [
+        'connect:test',
+        'mocha'
+    ]);
+
     grunt.registerTask('build', [
         'clean',
         'useminPrepare',
@@ -164,7 +169,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', [
         'jshint',
-        // 'test',
+        'test',
         'build'
     ]);
 };
