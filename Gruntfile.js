@@ -43,6 +43,25 @@ module.exports = function(grunt) {
                         ];
                     }
                 }
+            },
+            test: {
+                options: {
+                    middleware: function(connect) {
+                        return [
+                            mountFolder(connect, 'app/scripts'),
+                            mountFolder(connect, 'test')
+                        ];
+                    }
+                }
+            }
+        },
+
+        mocha: {
+            all: {
+                options: {
+                    run: true,
+                    urls: ['http://localhost:<%= connect.options.port %>/index.html']
+                }
             }
         },
 
