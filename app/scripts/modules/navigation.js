@@ -1,4 +1,4 @@
-/*global $, Globals, define, confirm, alert */
+/*global $, Globals, define, confirm, alert, Converter */
 'use strict';
 
 define(
@@ -130,6 +130,20 @@ define(
 
                     // Stop.
                     return;
+                }
+
+                // If version information available
+                if (data.meta != null && data.meta.version != null) {
+
+                    // parse version information
+                    var version = data.meta.version.split('.');
+
+                    // convert data if version > 1.x.x
+                    if (version[0] != null && version[0] > 1) {
+                        var converter = new Converter();
+                        converter.load(data);
+                        data = converter.convert();
+                    }
                 }
 
                 // Trigger event to add proband.
