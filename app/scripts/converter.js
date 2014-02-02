@@ -20,6 +20,12 @@ var Converter = (function() {
                 var converted = {};
 
                 converted.nr = interaction.index;
+
+                // skip interactions without record information
+                if (interaction.record == null) {
+                    continue;
+                }
+
                 converted.interaction_type = interaction.record.type;
                 converted.time = interaction.createdAt;
                 converted.network = platform.name;
