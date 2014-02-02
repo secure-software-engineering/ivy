@@ -49,13 +49,46 @@ describe('Converter', function() {
 
     describe('convertInteractions', function() {
         it('should convert v2 interactions format to v1 interactions format', function() {
-            var interactionsDatav1 = [];
+            var interactionsDatav1 = [{
+                "nr": 0,
+                "interaction_type": "openFacebook",
+                "time": "2014-01-15T19:45:49.374Z",
+                "network": "Facebook"
+            }, {
+                "nr": 1,
+                "interaction_type": "closeFacebook",
+                "time": "2014-01-15T21:24:14.670Z",
+                "network": "Facebook"
+            }, {
+                "nr": 2,
+                "interaction_type": "openFacebook",
+                "time": "2014-01-15T21:24:14.761Z",
+                "network": "Facebook"
+            }, {
+                "nr": 3,
+                "interaction_type": "like",
+                "time": "2014-01-15T21:45:57.751Z",
+                "network": "Facebook",
+                "object_id": "3e799b96",
+                "object_owner": "9cb2fda2",
+                "object_type": "status"
+            }, {
+                "nr": 4,
+                "interaction_type": "like",
+                "time": "2014-01-15T21:58:48.983Z",
+                "network": "Facebook",
+                "object_id": "3c92a4df",
+                "object_owner": "1abcc45b",
+                "object_type": "status"
+            }];
 
             var converter = new Converter();
             converter.load(probandDatav2);
             converter.convertInteractions();
 
-            expect(converter.interactions).to.deep.equal([]);
+            var convertedInteractions = converter.interactions.splice(0, 5);
+
+            expect(convertedInteractions).to.deep.equal(interactionsDatav1);
         });
     });
 
@@ -74,15 +107,6 @@ describe('Converter', function() {
             converter.convertDiary();
 
             expect(converter.diary).to.deep.equal(diaryDatav1);
-        });
-    });
-
-    describe('convert', function() {
-        it('should convert v2 data format to v1 data format', function() {
-            var converter = new Converter();
-            converter.load(probandDatav2);
-
-            expect(converter.convert()).to.deep.equal();
         });
     });
 });
