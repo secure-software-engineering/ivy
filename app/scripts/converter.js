@@ -32,8 +32,10 @@ var Converter = (function() {
 
                 if (converted.interaction_type === 'open') {
                     converted.interaction_type = 'openFacebook';
+                    converted.time = interaction.record.time;
                 } else if (converted.interaction_type === 'close') {
                     converted.interaction_type = 'closeFacebook';
+                    converted.time = interaction.record.time;
                 }
 
                 if (interaction.record.object !== undefined) {
