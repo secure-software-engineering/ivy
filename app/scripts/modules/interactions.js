@@ -172,6 +172,11 @@ define(
                     })
                     .on('mouseout', function(d) {
                         $('.tooltip').removeClass('fade in top');
+                    })
+                    .on('click', function(d) {
+                        var source = $('#heatmap-details-template').html();
+                        var template = Handlebars.compile(source);
+                        $('#heatmap-details').html(template(d));
                     });
 
                 var div = d3.select('body').append('div')
