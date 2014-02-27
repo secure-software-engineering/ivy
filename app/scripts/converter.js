@@ -8,6 +8,7 @@ var Converter = (function() {
         this.interactions = [];
         this.comments = {};
         this.diary = [];
+        this.privacy = {};
     };
 
     Converter.prototype.convertInteractions = function() {
@@ -100,6 +101,31 @@ var Converter = (function() {
         }
     };
 
+    Converter.prototype.convertPrivacySettings = function() {
+        for (var j in this.data.diary) {
+            var entry = this.data.diary[j];
+
+            this.diary.push([
+                entry.createdAt,
+                entry.content
+            ]);
+        }
+    };
+
+    Converter.prototype.convertPrivacySettings = function() {
+        var platform, privacySettings, timelineSettings, _i, _len, _ref, _ref1, _ref2;
+        _ref = this.data.platforms;
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+            platform = _ref[_i];
+            if ((((_ref1 = platform.static) != null ? _ref1['privacy-settings'] : void 0) != null) && (((_ref2 = platform.static) != null ? _ref2['timeline-settings'] : void 0) != null)) {
+                privacySettings = platform.static['privacy-settings'].pop();
+                timelineSettings = platform.static['timeline-settings'].pop();
+                this.privacy.standard = privacySettings;
+                this.privacy.timeline = timelineSettings;
+            }
+        }
+    };
+
     Converter.prototype.convert = function() {
         var converted = {};
 
@@ -107,11 +133,13 @@ var Converter = (function() {
         this.convertInteractions();
         this.convertComments();
         this.convertDiary();
+        this.convertPrivacySettings();
 
         // Add converted data to new data fields.
         converted.interactions = this.interactions;
         converted.comments = this.comments;
         converted.diary = this.diary;
+        converted.privacy = this.privacy;
 
         return converted;
     };
