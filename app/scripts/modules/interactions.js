@@ -82,7 +82,8 @@ define(
                     data = probandData[proband];
                     for (var i$ = 0, length$ = data.interactions.length; i$ < length$; ++i$) {
                         interaction = data.interactions[i$];
-                        if ('object_id' in interaction)
+                        if ('object_id' in interaction) {
+                            interaction.proband = proband;
                             if ((idx = in$(interaction.object_id, heatmapData)) >= 0) {
                                 heatmapData[idx].records.push(interaction);
                             } else {
@@ -91,6 +92,7 @@ define(
                                     records: [interaction]
                                 });
                             }
+                        }
                     }
                 }
 
