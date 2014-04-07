@@ -67,16 +67,18 @@ define(
                     probands[selectedProbands[i]] = Storage.loadProbandData(Globals.getWorkspace(), selectedProbands[i]);
                 }
 
+                var actionsSet = {};
+                function addInteraction (interaction) {
+                    actionsSet[interaction.interaction_type] = true;
+                }
+
+                for (var proband in probands) {
+                    var probandData = probands[proband];
+                    probandData.interactions.forEach(addInteraction);
+                }
+
                 var action, actions, classes, counters, dataBlob, interaction, pname;
-                actions = [
-                    'like',
-                    'commentstatus',
-                    'updatestatus',
-                    'share',
-                    'chat',
-                    'friendaccepted',
-                    'openFacebook'
-                ];
+                actions = Object.keys(actionsSet);
                 classes = [
                     'negligible',
                     'low',
