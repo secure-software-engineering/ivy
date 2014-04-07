@@ -146,6 +146,10 @@ define(
                 var probandsNameList = [];
                 var privacySettingsList = [];
 
+                function filterSettings (element) {
+                    return element.name === privacySettings[i].name;
+                }
+
                 for (proband in probandData) {
                     probandsNameList.push(proband);
 
@@ -154,9 +158,7 @@ define(
                     var privacySettings = standardSettings.concat(timelineSettings);
 
                     for (i = 0; i < privacySettings.length; i++) {
-                        var tmp = privacySettingsList.filter(function(element) {
-                            return element.name === privacySettings[i].name;
-                        });
+                        var tmp = privacySettingsList.filter(filterSettings);
 
                         if (tmp.length === 0) {
                             privacySettingsList.push({
