@@ -1,4 +1,4 @@
-[![devDependency Status](https://david-dm.org/oliverh855/ivy/dev-status.png)](https://david-dm.org/oliverh855/ivy#info=devDependencies)
+[![devDependency Status](https://david-dm.org/oliverh855/ivy/dev-status.svg)](https://david-dm.org/oliverh855/ivy#info=devDependencies)
 
 ivy
 ===
