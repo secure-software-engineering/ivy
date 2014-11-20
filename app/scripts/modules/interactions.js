@@ -122,11 +122,11 @@ define(
                 };
 
                 var colors = [
-                    'FFFFCC',
-                    'A1DAB4',
-                    '41B6C4',
-                    '2C7FB8',
-                    '253494'
+                    '#FFFFCC',
+                    '#A1DAB4',
+                    '#41B6C4',
+                    '#2C7FB8',
+                    '#253494'
                 ];
 
                 var domain = [];
